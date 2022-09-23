@@ -17,6 +17,8 @@
 #define INFO_LEVEL     10
 #define DEBUG_LEVEL    0
 
+#define DEFAULT_DELAY 1
+
 /**
 * This class handles the entire logging implementation for the 
 * threaded logger. The simple setup and interactions through the 
@@ -30,16 +32,21 @@
 */
 class Logger {
 public:
+	/**
+	* Default constructor
+	*/
+	Logger();
+
 	/* Constructor
-	* 
+	*
 	* @param loggerName the name of the logger
-	* @param fileName the name of the file the logger writes to 
+	* @param fileName the name of the file the logger writes to
 	* @param logDir the path that the fileName file exists in (not including the fileName)
 	* @param level the logging level
 	* @param separaor the delimitor character(s) in the log entries
 	* @param delay the listener thread delay time between queue checks
 	*/
-	Logger(std::string loggerName="root", std::string fileName="log.txt", std::string logDir="", std::string level="INFO", std::string separator="::", unsigned int delay = 1);
+	Logger(std::string loggerName, std::string fileName="log.txt", std::string logDir="", std::string level="INFO", std::string separator="::", unsigned int delay = 1);
 	
 	/**
 	* Copy constructor

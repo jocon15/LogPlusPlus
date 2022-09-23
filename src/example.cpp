@@ -17,5 +17,18 @@ int main() {
 
 	log.info("Exit");
 	std::cout << "Main is done executing" << std::endl;
+
+
+	// The logger will throw an error if invalid inputs are detected.
+	// Below, the "\\" is not allowed as a seperator
+	try {
+		Logger logger = Logger("secondaryLogger", "log.txt", "", "INFO", "\\", 1);
+	}
+	catch (const std::invalid_argument& error) {
+		std::cout << error.what() << std::endl;
+		// OUTPUT:
+		// Logger name cannot have escape characters
+	}
+
 	return 0;
 }

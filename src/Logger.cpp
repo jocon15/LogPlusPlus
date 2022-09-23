@@ -3,6 +3,17 @@
 
 // ========== Public Definitions ==========
 
+Logger::Logger() {
+	m_loggerName = "root";
+	m_fileName = "log.txt";
+	m_filePath = "";
+	m_level = INFO_LEVEL;
+	m_separator = "";
+	m_delay = DEFAULT_DELAY;
+
+	// start the listener thread and add it to the stored threads
+	m_threads.push_back(std::thread(&Logger::Listener, this));
+}
 
 Logger::Logger(std::string loggerName, std::string fileName, std::string logDir, std::string level, std::string separator, unsigned int delay) {
 	m_loggerName = ValidateLoggerName(loggerName);
@@ -100,17 +111,22 @@ std::string Logger::ValidateLoggerName(std::string name) {
 }
 
 std::string Logger::ValidateFileName(std::string name) {
-	// fixme
+	if (name.find("\\") != -1)
+		throw std::invalid_argument("Logger name cannot have escape characters");
 	return name;
 }
 
 std::string Logger::ValidateFilePath(std::string path) {
-	// fixme
+	if (path.find(".") != -1)
+		throw std::invalid_argument("Logger name cannot have ");
 	return path;
 }
 
 std::string Logger::ValidateSeparator(std::string separator) {
-	// fixme
+	if (separator.find("\\") != -1)
+		throw std::invalid_argument("Logger name cannot have escape characters");
+	if (separator.find(".") != -1)
+		throw std::invalid_argument("Logger name cannot have ");
 	return separator;
 }
 

@@ -2,7 +2,7 @@
 x64/
 .vs/
 
-Files
+# Files
 *Doxyfile
 DoxyFile
 *.sln
