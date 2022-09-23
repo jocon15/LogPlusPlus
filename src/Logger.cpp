@@ -4,10 +4,10 @@
 // ========== Public Definitions ==========
 
 
-Logger::Logger(std::string loggerName, std::string fileName, std::string filePath, std::string level, std::string separator, unsigned int delay) {
+Logger::Logger(std::string loggerName, std::string fileName, std::string logDir, std::string level, std::string separator, unsigned int delay) {
 	m_loggerName = ValidateLoggerName(loggerName);
 	m_fileName = ValidateFileName(fileName);
-	m_filePath = ValidateFilePath(filePath);
+	m_filePath = ValidateFilePath(logDir);
 	m_level = TranslateLevel(level);
 	m_separator = ValidateSeparator(separator);
 	m_delay = delay;

@@ -3,6 +3,8 @@ x64/
 .vs/
 
 Files
+*Doxyfile
+DoxyFile
 *.sln
 *.vcxproj
 *.filters
